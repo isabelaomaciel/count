@@ -12,15 +12,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.cyan,
       ),
       home: Scaffold(
           appBar: AppBar(
             title: Text('Contador'),
           ),
           body: Container(
-
               child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [Contador()],
           ))),
     );
@@ -38,23 +39,10 @@ class _Contador extends State<StatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-      Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    count++;
-                  });
-                },
-                child: Icon(Icons.add)),
-            Text(count.toString(),
-                style: TextStyle(
-                  fontSize: 35,
-                )),
+          Row(children: [
             ElevatedButton(
                 onPressed: () {
                   setState(() {
@@ -62,7 +50,20 @@ class _Contador extends State<StatefulWidget> {
                   });
                 },
                 child: Icon(Icons.remove)),
+            Text(" " + count.toString() + " " ,
+                style: TextStyle(
+                  fontSize: 35,
+
+                  overflow: TextOverflow.ellipsis,
+                )),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    count++;
+                  });
+                },
+                child: Icon(Icons.add)),
           ]),
-    ]);
+        ]);
   }
 }
